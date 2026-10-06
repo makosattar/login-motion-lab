@@ -1,0 +1,60 @@
+/* Fancy layer: design + animation on top of the lab's base/motion styles. */
+:root{--accent:#1f7a5c;--accent2:#35b58a;--grad:linear-gradient(135deg,#1f7a5c,#35b58a 55%,#7bd9b0)}
+body{background:#0f2a22}
+.shell{position:relative;background:transparent}
+.intro{position:relative;overflow:hidden;color:#eafaf2;background:linear-gradient(160deg,#0f3d2e,#145a43 60%,#1b7a5a);background-size:200% 200%;animation:bgshift 14s ease-in-out infinite alternate}
+.intro>*{position:relative;z-index:1}
+.intro .blobs{position:absolute;inset:0;z-index:0}
+.intro .eyebrow,.intro-footer,.intro-copy>p:last-child{color:#a9e3c8}
+.intro h1{background:linear-gradient(90deg,#fff,#a8f0cf,#fff);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+.brand{display:inline-block;transition:letter-spacing .4s ease}.brand:hover{letter-spacing:.14em}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:.55}
+.b1{width:340px;height:340px;background:#35b58a;top:-80px;left:-60px;animation:float1 16s ease-in-out infinite}
+.b2{width:280px;height:280px;background:#7bd9b0;bottom:-60px;right:-40px;animation:float2 19s ease-in-out infinite}
+.b3{width:200px;height:200px;background:#f2c46d;top:45%;left:45%;opacity:.28;animation:float3 22s ease-in-out infinite}
+.intro-copy>*{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}.intro-copy>h1{animation-delay:.1s,0s}.intro-copy>p:last-child{animation-delay:.3s}
+.workspace{background:radial-gradient(circle at 80% 0%,#e4f6ec,transparent 55%),#f6faf7;position:relative}
+.card{position:relative;padding:34px 34px 28px;border-radius:22px;background:#ffffffcc;backdrop-filter:blur(14px);border:1px solid #ffffff;box-shadow:0 30px 60px -25px #0f3d2e55,0 2px 6px #0f3d2e14;transition:box-shadow .4s ease,transform .4s ease}
+.card:hover{box-shadow:0 38px 70px -25px #0f3d2e66,0 2px 6px #0f3d2e14}
+.card::before{content:"";position:absolute;left:34px;right:34px;top:0;height:4px;border-radius:0 0 4px 4px;background:var(--grad);background-size:200% 100%;animation:sheen 4s linear infinite}
+.card h2{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content;max-width:100%}
+.card-shell{min-height:0}
+.card form .field,.card .description,.card .eyebrow,.card h2,.primary,.switch-copy{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}
+.card .eyebrow{animation-delay:.02s}.card h2{animation-delay:.06s}.card .description{animation-delay:.1s}
+.field:nth-of-type(1){animation-delay:.14s!important}.field:nth-of-type(2){animation-delay:.2s!important}.field:nth-of-type(3){animation-delay:.26s!important}.field:nth-of-type(4){animation-delay:.32s!important}
+.primary{animation-delay:.36s!important}.switch-copy{animation-delay:.42s!important}
+.field input{border-radius:12px;background:#fff;border:1.5px solid #d3e0d8}
+.field input:hover{border-color:#9cc4b2}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 5px #35b58a2b;transform:translateY(-1px)}
+.field label{transition:color .2s ease}.field:focus-within label{color:var(--accent)}
+.primary{position:relative;overflow:hidden;border-radius:12px;background:var(--grad);background-size:200% 100%;box-shadow:0 10px 24px -10px #1f7a5c99}
+.primary:hover:not(:disabled){background-position:100% 0;box-shadow:0 16px 30px -10px #1f7a5ccc}
+.primary::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;background:linear-gradient(90deg,transparent,#ffffff66,transparent);transform:skewX(-20deg)}
+.primary:hover:not(:disabled)::after{animation:glint .9s ease}
+.primary>span:last-child:not(:first-child){transition:transform .25s ease}.primary:hover:not(:disabled)>span:last-child:not(:first-child){transform:translateX(5px)}
+.text-button{transition:color .2s ease}.text-button:hover:not(:disabled){color:#0f5a41}
+.error-message:not(:empty){animation:rise .35s ease both}
+.notice:not(:empty){animation:rise .4s ease both;background:#fff4e6;padding:10px 14px;border-radius:10px}
+.welcome{text-align:center}.welcome h2{margin-inline:auto}.welcome .profile-details{text-align:left}
+.check{width:76px;height:76px;margin:0 auto 18px}
+.check svg{width:100%;height:100%;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.check circle{stroke:#35b58a;stroke-dasharray:151;stroke-dashoffset:151;animation:draw .7s .1s ease forwards;fill:#35b58a1a}
+.check path{stroke:#1f7a5c;stroke-dasharray:40;stroke-dashoffset:40;animation:draw .45s .7s ease forwards}
+.check{animation:pop .6s cubic-bezier(.3,1.6,.5,1) both}
+.panel-enter-from{opacity:0;transform:translateY(24px) scale(.97)}.panel-leave-to{opacity:0;transform:translateY(-14px) scale(.98)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes sheen{to{background-position:200% 0}}
+@keyframes bgshift{to{background-position:100% 100%}}
+@keyframes glint{to{left:130%}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes float1{50%{transform:translate(90px,60px) scale(1.15)}}
+@keyframes float2{50%{transform:translate(-80px,-70px) scale(1.2)}}
+@keyframes float3{50%{transform:translate(-120px,40px) scale(.8)}}
+@media(max-width:760px){.card{padding:26px 22px 22px}.card::before{left:22px;right:22px}.intro{padding:20px 26px}.card h2{font-size:40px}}
+@media(prefers-reduced-motion:reduce){
+  .intro,.intro h1,.blob,.card::before,.intro-copy>*,.card form .field,.card .description,.card .eyebrow,.card h2,.primary,.switch-copy,.error-message,.notice,.check{animation:none!important}
+  .check circle,.check path{animation:none;stroke-dashoffset:0}
+  .primary:hover:not(:disabled)::after{animation:none}
+  .field input:focus,.brand:hover{transform:none;letter-spacing:.06em}
+}
